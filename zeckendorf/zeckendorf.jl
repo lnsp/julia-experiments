@@ -1,9 +1,4 @@
-# created by mooxmirror (25.12.2015)
-# implementing the zeckendorf-theorem
-
-using Base.Test
-
-"Implements the Zeckendorf-theorem and outputs a Zeckendorf sequence {cᵪ | c ∈ {0, 1}}"
+"Implements Zeckendorf's theorem and outputs a Zeckendorf sequence {cᵪ | c ∈ {0, 1}}"
 function zeckendorf{T <: Integer}(n::T)
     @assert n >= 0 "n is required to be larger or equal than zero"
 
@@ -31,14 +26,3 @@ end
 
 "Generates a binary string from a boolean array in reverse order"
 binary_string{T <: AbstractArray{Bool}}(A::T) = join(map(Int, reverse(A)))
-
-"Tests the zeckendorf function"
-function test_zeckendorf()
-    @test(binary_string(zeckendorf(0)) == "0")
-    @test(binary_string(zeckendorf(1)) == "1")
-    @test(binary_string(zeckendorf(2)) == "100")
-    @test(binary_string(zeckendorf(4)) == "1010")
-    @test(binary_string(zeckendorf(6)) == "10010")
-
-    println("All tests passed")
-end
